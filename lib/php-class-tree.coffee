@@ -122,6 +122,12 @@ class PhpClassTree
         methodEntry.arguments.push new ArgumentEntry argumentResult.name, argumentResult.type, @getPoint text, argumentResult.index
       methods.push methodEntry
 
+    # sort methods by name
+    methods.sort (a, b) ->
+      if a.name > b.name then return 1
+      else if a.name < b.name then return -1
+      0
+      
     methodIndex = 0
     classIndex = 0
     # Putting methods to classes or to the root
